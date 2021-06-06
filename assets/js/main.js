@@ -8,11 +8,12 @@ let arreglo = [];
 const mostrarDOM = () => {
     let cuerpo = document.getElementById('resultados');
     const boton = document.getElementById('btnBoton');
+    const user = document.getElementById('nombre');
+    const pagina = document.getElementById('pagina');
+    const cantidad_repos = document.getElementById('repoPagina');
     boton.addEventListener('click', async () => {
-        try {
-            const user = document.getElementById('nombre');
-            const pagina = document.getElementById('pagina');
-            const cantidad_repos = document.getElementById('repoPagina');
+        
+           
             if (user.value != "" && pagina.value != "" && cantidad_repos.value != "") {
                 const datos = await request(user.value, pagina.value, cantidad_repos.value)
                 let info = datos[1];
@@ -37,9 +38,9 @@ const mostrarDOM = () => {
                           <a href=${arreglo[0][i].html_url}>${arreglo[0][i].name}</a>`
                 }
             }
-        } catch (error) {
-            alert('Not Found')
-        }
+       else{
+           alert('ingrese todos los campos')
+       }
     })
 }
 mostrarDOM()
