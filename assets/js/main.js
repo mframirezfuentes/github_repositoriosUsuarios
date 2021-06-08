@@ -12,13 +12,13 @@ const mostrarDOM = () => {
     const pagina = document.getElementById('pagina');
     const cantidad_repos = document.getElementById('repoPagina');
     boton.addEventListener('click', async () => {
-        
-           
-            if (user.value != "" && pagina.value != "" && cantidad_repos.value != "") {
-                const datos = await request(user.value, pagina.value, cantidad_repos.value)
-                let info = datos[1];
-                arreglo.push(info)
-                cuerpo.innerHTML = `<div class="row">               
+
+
+        if (user.value != "" && pagina.value != "" && cantidad_repos.value != "") {
+            const datos = await request(user.value, pagina.value, cantidad_repos.value)
+            let info = datos[1];
+            arreglo.push(info)
+            cuerpo.innerHTML = `<div class="row">               
                 <div class="col-6">
                 <h2>Datos Usuarios</h2>
                 <p>Nombre Usuario: ${datos[0].name}</p>
@@ -31,16 +31,15 @@ const mostrarDOM = () => {
                 <h2 id="datos">Datos Repositorios</h2><br>
                 </div>  
                 </div>`
-                console.log(arreglo)
-                for (let i = 0; i < arreglo[0].length; i++) {
-                    console.log(arreglo[0][i].html_url)
-                    document.getElementById('datos').innerHTML += `<br>     
+            console.log(arreglo)
+            for (let i = 0; i < arreglo[0].length; i++) {
+                console.log(arreglo[0][i].html_url)
+                document.getElementById('datos').innerHTML += `<br>     
                           <a href=${arreglo[0][i].html_url}>${arreglo[0][i].name}</a>`
-                }
             }
-       else{
-           alert('ingrese todos los campos')
-       }
+        } else {
+            alert('ingrese todos los campos')
+        }
     })
 }
 mostrarDOM()
